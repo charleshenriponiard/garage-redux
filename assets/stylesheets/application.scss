@@ -3,4 +3,17 @@
   margin-bottom: 20px;
 }
 
+.display-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  color: black;
+  &:hover {
+    text-decoration: none;
+    color: grey;
+  }
+}
 @import 'card';

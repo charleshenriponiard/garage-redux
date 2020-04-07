@@ -27,9 +27,18 @@ class CarNew extends Component {
   }
 
   render() {
+    const styles = {
+      paddingTop: 30,
+      borderTop: '1px solid rgb(190, 190, 190)'
+    };
+
     return (
       <div>
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <div className="display-flex">
+          <h2 >Create new car</h2>
+          <Link className="btn btn-primary" to="/">Back </Link>
+        </div>
+        <form style={styles} onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field
             label="Brand"
             name="brand"

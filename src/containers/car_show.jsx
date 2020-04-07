@@ -33,19 +33,32 @@ class CarShow extends Component {
     }
 
     return (
-      <div className="" style={styles}>
-        <h1>{car.brand}</h1>
-        <p>{car.model}</p>
-        <p>{car.owner}</p>
-        <p>{car.plate}</p>
-        <Link className="btn btn-primary" to="/">back</Link>
-        <button className="btn btn-danger" onClick={this.handleClick}>
-          supprimer
-        </button>
+      <div className="center-card">
+        <div className="card-trip">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div className="card-trip-infos">
+            <div>
+              <h2>{car.brand}</h2>
+              <p>{car.model}</p>
+            </div>
+            <h2 className="card-trip-pricing">{car.plate}</h2>
+          </div>
+          <div className="card-link">
+            <Link className="btn btn-primary" style={{marginRight: 10}} to="/">back</Link>
+            <button className="btn btn-danger" style={{marginRight: 10}} onClick={this.handleClick}>
+              supprimer
+            </button>
+          </div>
+          
+        </div>
       </div>
     );
   }
 }
+
+
+
+
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
