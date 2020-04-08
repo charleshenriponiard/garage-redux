@@ -1,27 +1,33 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { createCar } from '../actions';
-import { Link } from 'react-router-dom';
+
 
 class CarNew extends Component {
-
   onSubmit = (values) => {
+    console.log(values, 'values on submit');
     this.props.createCar(values, (car) => {
       this.props.history.push('/');
       return car;
     });
   }
 
-  renderField = (field) => {
+
+  renderField = ({ input, label, type, meta: { touched, error, warning } }) => {
+    console.log(error, 'field');
     return (
       <div className="form-group">
-        <label>{field.label}</label>
-        <input
-          className="form-control"
-          type={field.type}
-          {...field.input}
-        /> 
+        <label>{label}</label>
+        <div>
+          <input
+            className="form-control"
+            type={type}
+            {...input}
+          />
+          {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+        </div>
       </div>
     );
   }
@@ -63,13 +69,14 @@ class CarNew extends Component {
             type="text"
             component={this.renderField}
           />
-          <button className="btn btn-primary" type="submit"
-            disabled={this.props.pristine || this.props.submitting} 
+          <button
+            className="btn btn-primary"
+            type="submit"
+            disabled={this.props.pristine || this.props.submitting}
           >
             Create Car
           </button>
         </form>
-        <Link className="btn btn-light" to="/">Back </Link>
       </div>
     );
   }
